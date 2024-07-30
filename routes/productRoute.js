@@ -10,13 +10,13 @@ const storage = multer.diskStorage({
     filename: function(req, file, cb) {
         cb(null, file.originalname)
     }
-})
+})                                                                                                   
+                                                                                                    //  auth, admin,
 
 const upload = multer({storage: storage})
-
 const router = express.Router()
 
-router.post("/api/product", upload.single("img"), auth, admin, productController.createProduct)
+router.post("/api/product", upload.single("img"),  productController.createProduct)              
 router.get("/api/product", productController.getAllProduct)
 
 module.exports = router
