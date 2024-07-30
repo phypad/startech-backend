@@ -12,7 +12,7 @@ const app = express();
 connectDB();
 dotenv.config();
 
-app.use(
+app.use(                                                                         
   cors({
     origin: "https://ecom-frontend-gold.vercel.app",
     allowedHeaders: ["Content-Type", "Authorization", "auth-token"],

@@ -14,9 +14,15 @@ const storage = multer.diskStorage({
                                                                                                     //  auth, admin,
 
 const upload = multer({storage: storage})
+
+
 const router = express.Router()
 
-router.post("/api/product", upload.single("img"),  productController.createProduct)              
+router.post("/api/product", upload.single("img"), (req, res, next) =>{
+   console.log('Received request body:', req.body);
+   console.log('Received File:', req.file);
+   next();
+},  productController.createProduct)              
 router.get("/api/product", productController.getAllProduct)
 
 module.exports = router
